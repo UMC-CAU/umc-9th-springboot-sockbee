@@ -1,4 +1,4 @@
-package com.example.umc9th.domain.terms.entity;
+package com.example.umc9th.domain.term.entity;
 
 import com.example.umc9th.global.BaseEntity;
 import lombok.*;
