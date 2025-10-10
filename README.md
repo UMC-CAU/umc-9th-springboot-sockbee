@@ -1,28 +1,39 @@
 프로젝트 구조
-
-com.example.app
-├─ config
-├─ domain               
+├─ domain
 │   ├─ user
-│   │   ├─ Entity
-│   │   │   ├─User.java
-│   │   ├─ Mapping
+│   │   ├─ entity
+│   │   │   └─ User.java
+│   │   ├─ mapping
 │   │   │   ├─ UserTerm.java
 │   │   │   ├─ UserFoodTag.java
 │   │   │   ├─ UserMission.java
 │   │   │   └─ UserRegionProgress.java
+│   │   ├─ repository
+│   │   │   ├─ UserRepository.java
+│   │   │   ├─ UserTermRepository.java
+│   │   │   ├─ UserFoodTagRepository.java
+│   │   │   ├─ UserMissionRepository.java
+│   │   │   └─ UserRegionProgressRepository.java
 │   ├─ store
-│   │   ├─ Entity
+│   │   ├─ entity
 │   │   │   ├─ Store.java
 │   │   │   ├─ Region.java
 │   │   │   ├─ FoodTag.java
-│   │   │   ├─ Review.java
+│   │   │   └─ Review.java
+│   │   ├─ repository
+│   │   │   ├─ StoreRepository.java
+│   │   │   ├─ RegionRepository.java
+│   │   │   ├─ FoodTagRepository.java
+│   │   │   └─ ReviewRepository.java
 │   ├─ mission
-│   │   ├─ Mission.java
+│   │   ├─ entity
+│   │   │   └─ Mission.java
+│   │   ├─ repository
+│   │   │   └─ MissionRepository.java
 │   └─ term
-│       └─ Term.java
-├─ repository           
-│   ├─ user
-│   ├─ mission
-│   ├─ term
-│   └─ store
+│       ├─ entity
+│       │   └─ Term.java
+│       ├─ repository
+│       │   └─ TermRepository.java
+├─ global
+│   ├─ BaseEntity.java
