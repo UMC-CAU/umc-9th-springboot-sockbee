@@ -1,5 +1,8 @@
 package com.example.umc9th.domain.member.entity;
 
+import com.example.umc9th.domain.member.enums.Gender;
+import com.example.umc9th.domain.member.enums.SnsType;
+import com.example.umc9th.domain.member.enums.MemberStatus;
 import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 import jakarta.persistence.*;
@@ -55,16 +58,4 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new ArrayList<>();
-
-    public enum Gender {
-        M, F, OTHER
-    }
-
-    public enum SnsType {
-        KAKAO, NAVER, APPLE, GOOGLE, NONE
-    }
-
-    public enum MemberStatus {
-        ACTIVE, INACTIVE, BANNED
-    }
 }
