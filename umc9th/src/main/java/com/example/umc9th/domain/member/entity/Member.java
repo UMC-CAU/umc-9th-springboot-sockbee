@@ -56,12 +56,6 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private Set<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new HashSet<>();
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserMission> userMissions = new HashSet<>();
-
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.store.entity.Review> reviews = new HashSet<>();
-
     public enum Gender {
         M, F, OTHER
     }
