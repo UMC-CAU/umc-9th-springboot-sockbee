@@ -4,8 +4,8 @@ import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "member")
@@ -48,13 +48,13 @@ public class Member extends BaseEntity {
 
     // mappings
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new HashSet<>();
+    private List<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserTerm> userTerms = new HashSet<>();
+    private List<com.example.umc9th.domain.member.mapping.UserTerm> userTerms = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new HashSet<>();
+    private List<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new ArrayList<>();
 
     public enum Gender {
         M, F, OTHER
