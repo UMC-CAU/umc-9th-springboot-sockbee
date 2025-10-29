@@ -1,11 +1,14 @@
 package com.example.umc9th.domain.member.entity;
 
+import com.example.umc9th.domain.member.enums.Gender;
+import com.example.umc9th.domain.member.enums.SnsType;
+import com.example.umc9th.domain.member.enums.MemberStatus;
 import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "member")
@@ -48,29 +51,11 @@ public class Member extends BaseEntity {
 
     // mappings
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new HashSet<>();
+    private List<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserTerm> userTerms = new HashSet<>();
+    private List<com.example.umc9th.domain.member.mapping.UserTerm> userTerms = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new HashSet<>();
-
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserMission> userMissions = new HashSet<>();
-
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.store.entity.Review> reviews = new HashSet<>();
-
-    public enum Gender {
-        M, F, OTHER
-    }
-
-    public enum SnsType {
-        KAKAO, NAVER, APPLE, GOOGLE, NONE
-    }
-
-    public enum MemberStatus {
-        ACTIVE, INACTIVE, BANNED
-    }
+    private List<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new ArrayList<>();
 }
