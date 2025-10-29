@@ -1,0 +1,135 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+/.gradle/
+
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+
+# 로그 파일
+*.log
+
+# Mac / Windows 시스템 파일
+.DS_Store
+Thumbs.db
+
+# 환경설정 파일 (개인 개발 환경 관련)
+*.env
+*.local.properties
+
+### Gradle ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# gradle 캐시 및 임시 파일
+.gradle/
+**/build/
+!**/src/**/build/
+
+# Gradle daemon 관련
+.gradle/
+.gradle/**
+!gradle/wrapper/gradle-wrapper.jar
+
+# gradlew 캐시 파일
+.gradle/
+build/
+out/
+
+# IntelliJ의 컴파일 캐시, 인덱스, 로그 등
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dictionaries
+.idea/**/shelf/
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/sonarlint/
+.idea/**/vcs.xml
+
+# IntelliJ의 output 폴더
+out/
+
+### Eclipse (혹시 Eclipse 같이 쓸 경우) ###
+.classpath
+.project
+.settings/
+
+### OS별 임시 파일 ###
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+### Spring Boot ###
+# 환경설정 파일 (보안용)
+application-*.yml
+application-*.yaml
+application-*.properties
+
+# test 결과 및 임시 데이터
+target/
+bin/
+
+### 기타 ###
+# node, npm, yarn 관련 (프론트엔드 모듈 있을 경우)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IntelliJ 플러그인 캐시 (SonarLint 등)
+.idea/sonarlint/
+
+# JetBrains Fleet
+.fleet/
