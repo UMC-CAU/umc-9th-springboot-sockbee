@@ -1,5 +1,6 @@
 package com.example.umc9th.domain.store.entity;
 
+import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 
@@ -35,7 +36,7 @@ public class Store extends BaseEntity {
     private Region region;
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.store.entity.Review> reviews = new HashSet<>();
+    private Set<Review> reviews = new HashSet<>();
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
     private Set<com.example.umc9th.domain.mission.entity.Mission> missions = new HashSet<>();
