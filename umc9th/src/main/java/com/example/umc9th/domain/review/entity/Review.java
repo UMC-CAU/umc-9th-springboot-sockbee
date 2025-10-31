@@ -1,5 +1,6 @@
-package com.example.umc9th.domain.store.entity;
+package com.example.umc9th.domain.review.entity;
 
+import com.example.umc9th.domain.store.entity.Store;
 import com.example.umc9th.global.BaseEntity;
 import com.example.umc9th.domain.member.entity.Member;
 import lombok.*;
