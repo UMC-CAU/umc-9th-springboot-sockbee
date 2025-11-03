@@ -1,5 +1,6 @@
 package com.example.umc9th.domain.store.repository.impl;
 
+import com.querydsl.core.types.Projections;
 import com.example.umc9th.domain.store.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.entity.QReview;
 import com.example.umc9th.domain.store.entity.QStore;
@@ -24,7 +25,9 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
         QMember member = QMember.member;
 
         var query = queryFactory
-                .select(new com.querydsl.core.types.Projections.constructor(
+                //Projections는 new로 인스턴스를 만드는 클래스가 아니라 static helper 클래스이므로
+                //new 없이 정적 메서드로 호출해야함.
+                .select(com.querydsl.core.types.Projections.constructor(
                         ReviewResponseDTO.class,
                         review.reviewId,
                         store.id,
