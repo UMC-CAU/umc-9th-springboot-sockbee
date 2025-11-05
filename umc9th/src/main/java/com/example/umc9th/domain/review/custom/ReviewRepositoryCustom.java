@@ -1,6 +1,6 @@
-package com.example.umc9th.domain.store.repository.custom;
+package com.example.umc9th.domain.review.custom;
 
-import com.example.umc9th.domain.store.dto.ReviewResponseDTO;
+import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import java.util.List;
 
 public interface ReviewRepositoryCustom {

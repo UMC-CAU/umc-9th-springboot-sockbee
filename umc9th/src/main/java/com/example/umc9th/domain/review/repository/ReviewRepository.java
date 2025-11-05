@@ -2,7 +2,7 @@ package com.example.umc9th.domain.review.repository;
 
 import com.example.umc9th.domain.review.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.umc9th.domain.store.repository.custom.ReviewRepositoryCustom;
+import com.example.umc9th.domain.review.custom.ReviewRepositoryCustom;
 
 import java.util.List;
 

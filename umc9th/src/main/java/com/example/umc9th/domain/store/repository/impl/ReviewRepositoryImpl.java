@@ -1,11 +1,10 @@
 package com.example.umc9th.domain.store.repository.impl;
 
-import com.querydsl.core.types.Projections;
-import com.example.umc9th.domain.store.dto.ReviewResponseDTO;
+import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.entity.QReview;
 import com.example.umc9th.domain.store.entity.QStore;
 import com.example.umc9th.domain.member.entity.QMember;
-import com.example.umc9th.domain.store.repository.custom.ReviewRepositoryCustom;
+import com.example.umc9th.domain.review.custom.ReviewRepositoryCustom;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package com.example.umc9th.domain.store.controller;
+package com.example.umc9th.domain.review.controller;
 
-import com.example.umc9th.domain.store.dto.ReviewResponseDTO;
-import com.example.umc9th.domain.store.service.ReviewQueryService;
+import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
+import com.example.umc9th.domain.review.service.ReviewQueryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package com.example.umc9th.domain.store.service;
+package com.example.umc9th.domain.review.service;
 
-import com.example.umc9th.domain.store.dto.ReviewResponseDTO;
+import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
