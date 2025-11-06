@@ -1,4 +1,4 @@
-package com.example.umc9th.domain.store.repository.impl;
+package com.example.umc9th.domain.review.repository.impl;
 
 import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.entity.QReview;
