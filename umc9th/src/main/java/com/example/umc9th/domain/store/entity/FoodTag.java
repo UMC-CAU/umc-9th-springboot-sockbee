@@ -4,8 +4,8 @@ import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "food_tag")
@@ -20,8 +20,8 @@ public class FoodTag extends BaseEntity {
     private String name;
 
     @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.store.entity.Store> stores = new HashSet<>();
+    private List<com.example.umc9th.domain.store.entity.Store> stores = new ArrayList<>();
 
     @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new HashSet<>();
+    private List<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new ArrayList<>();
 }

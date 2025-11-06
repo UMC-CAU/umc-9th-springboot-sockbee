@@ -1,11 +1,12 @@
 package com.example.umc9th.domain.store.entity;
 
+import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "store",
@@ -35,8 +36,8 @@ public class Store extends BaseEntity {
     private Region region;
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.store.entity.Review> reviews = new HashSet<>();
+    private List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.mission.entity.Mission> missions = new HashSet<>();
+    private List<com.example.umc9th.domain.mission.entity.Mission> missions = new ArrayList<>();
 }
