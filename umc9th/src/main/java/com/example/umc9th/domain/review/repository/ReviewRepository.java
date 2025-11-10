@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRepositoryCustom {
     // 특정 매장의 리뷰 전체 조회
-    List<Review> findByStore_Id(Long storeId);
+    List<Review> findByStoreId(Long storeId);
 }
