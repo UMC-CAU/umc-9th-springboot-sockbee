@@ -13,7 +13,6 @@ import java.util.Set;
 @Entity
 @Table(name = "mission")
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
