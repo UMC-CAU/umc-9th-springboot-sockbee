@@ -41,10 +41,4 @@ public class Mission extends BaseEntity {
     @OneToMany(mappedBy = "mission", fetch = FetchType.LAZY)
     private Set<com.example.umc9th.domain.member.mapping.UserMission> userMissions = new HashSet<>();
 
-    public enum Status {
-        IN_PROGRESS,
-        SUCCESS,
-        FAILED,
-        CANCELLED
-    }
 }

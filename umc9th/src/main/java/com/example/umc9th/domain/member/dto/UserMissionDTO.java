@@ -1,12 +1,12 @@
 package com.example.umc9th.domain.member.dto;
 
-import com.example.umc9th.domain.mission.entity.Mission;
+import com.example.umc9th.domain.mission.entity.Status;
 
 import java.time.LocalDateTime;
 
 public record UserMissionDTO(
         Long missionId,
-        Mission.Status status,
+        Status status,
         Integer rewardPoint,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
