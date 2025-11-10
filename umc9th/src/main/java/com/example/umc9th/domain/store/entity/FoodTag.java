@@ -1,5 +1,6 @@
 package com.example.umc9th.domain.store.entity;
 
+import com.example.umc9th.domain.member.mapping.UserFoodTag;
 import com.example.umc9th.global.BaseEntity;
 import lombok.*;
 
@@ -20,8 +21,8 @@ public class FoodTag extends BaseEntity {
     private String name;
 
     @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
-    private List<com.example.umc9th.domain.store.entity.Store> stores = new ArrayList<>();
+    private List<Store> stores = new ArrayList<>();
 
     @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY)
-    private List<com.example.umc9th.domain.member.mapping.UserFoodTag> userFoodTags = new ArrayList<>();
+    private List<UserFoodTag> userFoodTags = new ArrayList<>();
 }
