@@ -1,6 +1,6 @@
 package com.example.umc9th.domain.mission.dto;
 
-import com.example.umc9th.domain.mission.entity.Mission;
+import com.example.umc9th.domain.mission.entity.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class MissionAvailableDTO {
 
     private Long missionId;
-    private Mission.Status status;
+    private Status status;
     private Integer rewardPoint;
     private LocalDateTime dueDate;
     private Long storeId;
