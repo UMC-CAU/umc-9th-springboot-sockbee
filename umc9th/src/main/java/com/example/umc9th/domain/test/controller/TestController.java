@@ -17,7 +17,7 @@ public class TestController {
     @GetMapping("/test")
     public ApiResponse<TestResDTO.Testing> test() throws Exception {
         // 응답 코드 정의
-        GeneralSuccessCode code = GeneralSuccessCode.OK;
+        GeneralSuccessCode code = GeneralSuccessCode.COMMON000;
         return ApiResponse.onSuccess(
                 code,
                 TestConverter.toTestingDTO("This is Test!")
