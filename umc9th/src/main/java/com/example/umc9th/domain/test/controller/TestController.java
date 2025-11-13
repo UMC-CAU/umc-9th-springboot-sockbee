@@ -23,4 +23,11 @@ public class TestController {
                 TestConverter.toTestingDTO("This is Test!")
         );
     }
+    // 예외 상황
+    @GetMapping("/exception")
+    public ApiResponse<TestResDTO.Exception> exception(
+            @RequestParam Long flag
+    ) {
+        return null;
+    }
 }
