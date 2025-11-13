@@ -2,7 +2,6 @@ package com.example.umc9th.global.apiPayload;
 
 import com.example.umc9th.global.apiPayload.code.BaseErrorCode;
 import com.example.umc9th.global.apiPayload.code.BaseSuccessCode;
-import com.example.umc9th.global.apiPayload.code.GeneralSuccessCode;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.AllArgsConstructor;
@@ -30,23 +29,18 @@ public class ApiResponse<T> {
         return new ApiResponse<>(true, code.getCode(), code.getMessage(), result);
     }
 
-    // 성공한 경우 (result 없음)
+    //성공한 경우 (result 없이 메시지만)
     public static <T> ApiResponse<T> onSuccess(BaseSuccessCode code) {
         return new ApiResponse<>(true, code.getCode(), code.getMessage(), null);
     }
 
-    // 편의 메서드: 기본 성공 코드(COMMON000)와 result 포함
-    public static <T> ApiResponse<T> onSuccess(T result) {
-        return new ApiResponse<>(true, GeneralSuccessCode.COMMON000.getCode(), GeneralSuccessCode.COMMON000.getMessage(), result);
-    }
-
-    // 편의 메서드: 기본 성공 코드(COMMON000), result 없음
-    public static ApiResponse<Void> onSuccess() {
-        return new ApiResponse<>(true, GeneralSuccessCode.COMMON000.getCode(), GeneralSuccessCode.COMMON000.getMessage(), null);
-    }
-
-    // 실패한 경우 (result 포함)
+    //실패한 경우 (result 포함)
     public static <T> ApiResponse<T> onFailure(BaseErrorCode code, T result) {
         return new ApiResponse<>(false, code.getCode(), code.getMessage(), result);
+    }
+
+    // 실패한 경우 (result 없이 메시지만)
+    public static <T> ApiResponse<T> onFailure(BaseErrorCode code) {
+        return new ApiResponse<>(false, code.getCode(), code.getMessage(), null);
     }
 }
