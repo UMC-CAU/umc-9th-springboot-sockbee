@@ -1,10 +1,15 @@
 package com.example.umc9th.domain.test.exception;
 
-import com.example.umc9th.global.apiPayload.code.BaseErrorCode;
-import com.example.umc9th.global.apiPayload.code.GeneralException;
+import com.example.umc9th.domain.test.exception.code.TestErrorCode;
+import lombok.Getter;
 
-public class TestException extends GeneralException {
-    public TestException(BaseErrorCode code) {
-        super(code);
+@Getter
+public class TestException extends RuntimeException {
+    private final TestErrorCode errorCode;
+
+    public TestException(TestErrorCode errorCode) {
+        super(errorCode != null ? errorCode.toString() : null);
+        this.errorCode = errorCode;
     }
+
 }
