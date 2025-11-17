@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReviewResponseDTO {
-    private Long reviewId;       // Long
-    private Long storeId;        // Long
-    private String storeName;    // String
-    private BigDecimal rating;   // BigDecimal
-    private String content;      // String
-    private LocalDateTime createdAt; // LocalDateTime
+    private Long reviewId;
+    private Long storeId;
+    private String storeName;
+    private BigDecimal rating;
+    private String content;
+    private LocalDateTime createdAt;
 }
