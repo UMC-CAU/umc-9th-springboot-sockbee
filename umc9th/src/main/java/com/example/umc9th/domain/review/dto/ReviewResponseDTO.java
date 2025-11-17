@@ -1,4 +1,3 @@
-// java
 package com.example.umc9th.domain.review.dto;
 
 import lombok.AllArgsConstructor;
