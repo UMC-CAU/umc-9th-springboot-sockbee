@@ -20,7 +20,6 @@ public class TestController {
 
     @GetMapping("/test")
     public ApiResponse<TestResDTO.Testing> test() {
-        // 응답 코드 정의
         GeneralSuccessCode code = GeneralSuccessCode.OK;
 
         return ApiResponse.onSuccess(
@@ -29,7 +28,7 @@ public class TestController {
         );
     }
 
-    // 예외 상황
+    // Exception 테스트
     @GetMapping("/exception")
     public ApiResponse<TestResDTO.Exception> exception(
             @RequestParam Long flag
@@ -37,7 +36,6 @@ public class TestController {
 
         testQueryService.checkFlag(flag);
 
-        // 응답 코드 정의
         GeneralSuccessCode code = GeneralSuccessCode.OK;
         return ApiResponse.onSuccess(code, TestConverter.toExceptionDTO("This is Test!"));
     }

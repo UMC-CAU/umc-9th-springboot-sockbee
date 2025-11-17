@@ -1,10 +1,8 @@
-// java
 package com.example.umc9th.domain.review.controller;
 
 import com.example.umc9th.global.apiPayload.ApiResponse;
 import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.service.ReviewQueryService;
-import com.example.umc9th.global.apiPayload.code.BaseSuccessCode;
 import com.example.umc9th.global.apiPayload.code.GeneralSuccessCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
