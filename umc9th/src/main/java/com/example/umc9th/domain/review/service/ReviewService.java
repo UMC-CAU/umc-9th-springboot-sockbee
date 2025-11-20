@@ -8,7 +8,7 @@ import com.example.umc9th.domain.review.entity.Review;
 import com.example.umc9th.domain.review.repository.ReviewRepository;
 import com.example.umc9th.domain.store.entity.Store;
 import com.example.umc9th.domain.store.repository.StoreRepository;
-import com.example.umc9th.global.apiPayload.code.status.ErrorStatus;
+import com.example.umc9th.global.apiPayload.code.error.ReviewErrorCode;
 import com.example.umc9th.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,10 +26,10 @@ public class ReviewService {
     public ReviewResponseDTO createReview(Long storeId, Long memberId, ReviewRequestDTO requestDTO) {
 
         Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new GeneralException(ErrorStatus.STORE_NOT_FOUND));
+                .orElseThrow(() -> new GeneralException(ReviewErrorCode.STORE_NOT_FOUND));
 
         Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new GeneralException(ErrorStatus.MEMBER_NOT_FOUND));
+                .orElseThrow(() -> new GeneralException(ReviewErrorCode.MEMBER_NOT_FOUND));
 
         Review review = Review.builder()
                 .content(requestDTO.getContent())

@@ -1,6 +1,5 @@
 package com.example.umc9th.global.apiPayload.code.success;
 
-import com.example.umc9th.global.apiPayload.code.BaseSuccessCode;
 import org.springframework.http.HttpStatus;
 
 public enum MissionSuccessCode implements BaseSuccessCode {

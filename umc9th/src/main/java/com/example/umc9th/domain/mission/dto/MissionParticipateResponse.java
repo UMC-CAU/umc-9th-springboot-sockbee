@@ -1,7 +1,7 @@
 package com.example.umc9th.domain.mission.dto;
 
 import com.example.umc9th.domain.member.mapping.UserMission;
-import com.example.umc9th.global.apiPayload.code.BaseSuccessCode;
+import com.example.umc9th.global.apiPayload.code.success.BaseSuccessCode;
 import com.example.umc9th.global.apiPayload.code.success.MissionSuccessCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

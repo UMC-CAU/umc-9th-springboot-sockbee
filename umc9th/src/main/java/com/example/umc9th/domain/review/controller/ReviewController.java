@@ -4,7 +4,7 @@ import com.example.umc9th.domain.review.dto.ReviewRequestDTO;
 import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.service.ReviewService;
 import com.example.umc9th.global.apiPayload.ApiResponse;
-import com.example.umc9th.global.apiPayload.code.status.SuccessStatus;
+import com.example.umc9th.global.apiPayload.code.success.ReviewSuccesssCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class ReviewController {
         Long memberId = getCurrentMemberId();
 
         ReviewResponseDTO responseDTO = reviewService.createReview(storeId, memberId, requestDTO);
-        return ApiResponse.onSuccess(SuccessStatus.REVIEW_CREATE_SUCCESS, responseDTO);
+        return ApiResponse.onSuccess(ReviewSuccesssCode.REVIEW_CREATE_SUCCESS, responseDTO);
     }
 
     // 10주차 이후 스프링 시큐리티 연동 시 실제 구현
