@@ -1,6 +1,6 @@
 package com.example.umc9th.domain.test.exception.code;
 
-import com.example.umc9th.global.apiPayload.code.BaseErrorCode;
+import com.example.umc9th.global.apiPayload.code.error.BaseErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

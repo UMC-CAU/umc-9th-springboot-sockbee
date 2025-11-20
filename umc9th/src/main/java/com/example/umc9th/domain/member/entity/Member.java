@@ -58,4 +58,8 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<com.example.umc9th.domain.member.mapping.UserRegionProgress> userRegionProgresses = new ArrayList<>();
+
+    public Long getId() {
+        return this.userId;
+    }
 }

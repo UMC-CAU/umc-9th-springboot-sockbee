@@ -1,4 +1,4 @@
-package com.example.umc9th.global.apiPayload.code;
+package com.example.umc9th.global.apiPayload.code.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
-public enum GeneralErrorCode implements BaseErrorCode{
+public enum GeneralErrorCode implements BaseErrorCode {
 
     BAD_REQUEST(HttpStatus.BAD_REQUEST,
             "COMMON400_1",
