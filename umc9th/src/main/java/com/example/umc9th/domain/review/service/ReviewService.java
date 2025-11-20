@@ -42,8 +42,8 @@ public class ReviewService {
 
         return ReviewResponseDTO.builder()
                 .reviewId(saved.getReviewId())
-                .storeId(store.getId()) // 실제 Store PK 필드명에 맞게 수정
-                .memberId(member.getId()) // 실제 Member PK 필드명에 맞게 수정
+                .storeId(store.getId())
+                .memberId(member.getId())
                 .content(saved.getContent())
                 .star(saved.getStar())
                 .createdAt(saved.getCreatedAt())
