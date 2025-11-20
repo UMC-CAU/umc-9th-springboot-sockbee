@@ -13,12 +13,12 @@ public interface MissionRepository extends JpaRepository<Mission, Long> {
 
     @Query("""
         SELECT new com.example.umc9th.domain.mission.dto.MissionAvailableDTO(
-            m.missionId, 
-            m.status, 
-            m.rewardPoint, 
-            m.dueDate, 
-            s.id, 
-            s.name, 
+            m.missionId,
+            m.status,
+            m.rewardPoint,
+            m.dueDate,
+            s.id,
+            s.name,
             ft.name
         )
         FROM Mission m
