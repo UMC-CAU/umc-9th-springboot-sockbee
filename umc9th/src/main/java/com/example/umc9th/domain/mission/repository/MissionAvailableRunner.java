@@ -20,13 +20,12 @@ public class MissionAvailableRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Long userId = 1L;
         Long regionId = 2L; // 조회할 지역
         LocalDateTime cursorUpdatedAt = LocalDateTime.now();
         Long cursorMissionId = Long.MAX_VALUE;
 
         List<MissionAvailableDTO> result = missionRepository.findAvailableMissionsByRegionWithCursor(
-                userId, regionId, cursorUpdatedAt, cursorMissionId
+                regionId, cursorUpdatedAt, cursorMissionId
         );
 
         for (MissionAvailableDTO dto : result) {

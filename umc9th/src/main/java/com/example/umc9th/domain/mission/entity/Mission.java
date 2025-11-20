@@ -1,6 +1,5 @@
 package com.example.umc9th.domain.mission.entity;
 
-import com.example.umc9th.domain.member.entity.Member;
 import com.example.umc9th.domain.member.mapping.UserMission;
 import com.example.umc9th.domain.store.entity.Store;
 import com.example.umc9th.global.BaseEntity;
@@ -26,10 +25,6 @@ public class Mission extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Member member;
 
     private LocalDateTime dueDate;
 

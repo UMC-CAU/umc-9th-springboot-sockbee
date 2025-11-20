@@ -24,8 +24,7 @@ public interface MissionRepository extends JpaRepository<Mission, Long> {
         FROM Mission m
         JOIN m.store s
         JOIN s.tag ft
-        WHERE m.member.userId = :userId
-          AND s.region.regionId = :regionId
+        WHERE s.region.regionId = :regionId
           AND m.status = 'AVAILABLE'
           AND (
                m.updatedAt < :updatedAt
@@ -34,7 +33,6 @@ public interface MissionRepository extends JpaRepository<Mission, Long> {
         ORDER BY m.updatedAt DESC, m.missionId DESC
         """)
     List<MissionAvailableDTO> findAvailableMissionsByRegionWithCursor(
-            @Param("userId") Long userId,
             @Param("regionId") Long regionId,
             @Param("updatedAt") LocalDateTime updatedAt,
             @Param("missionId") Long missionId
