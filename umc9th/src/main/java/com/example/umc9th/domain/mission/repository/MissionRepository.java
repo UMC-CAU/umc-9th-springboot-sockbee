@@ -2,6 +2,7 @@ package com.example.umc9th.domain.mission.repository;
 
 import com.example.umc9th.domain.mission.dto.MissionAvailableDTO;
 import com.example.umc9th.domain.mission.entity.Mission;
+import com.example.umc9th.domain.mission.repository.custom.MissionRepositoryCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface MissionRepository extends JpaRepository<Mission, Long> {
+public interface MissionRepository extends JpaRepository<Mission, Long>, MissionRepositoryCustom {
 
     @Query("""
         SELECT new com.example.umc9th.domain.mission.dto.MissionAvailableDTO(
