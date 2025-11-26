@@ -8,6 +8,9 @@ import com.example.umc9th.domain.review.custom.ReviewRepositoryCustom;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,16 +28,15 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
         QMember member = QMember.member;
 
         var query = queryFactory
-                //Projections는 new로 인스턴스를 만드는 클래스가 아니라 static helper 클래스이므로
-                //new 없이 정적 메서드로 호출해야함.
                 .select(Projections.constructor(
                         ReviewResponseDTO.class,
                         review.reviewId,
-                        store.id,
+                        member.name,
                         store.name,
                         review.star,
                         review.content,
-                        review.createdAt
+                        review.createdAt,
+                        review.updatedAt
                 ))
                 .from(review)
                 .join(review.store, store)
@@ -51,8 +53,39 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
             query.where(review.star.between(min, max));
         }
 
-        return query
-                .orderBy(review.createdAt.desc())
-                .fetch();
+        return query.orderBy(review.createdAt.desc()).fetch();
+    }
+
+    @Override
+    public Page<ReviewResponseDTO> findMyReviews(Long userId, Pageable pageable) {
+        QReview review = QReview.review;
+        QStore store = QStore.store;
+        QMember member = QMember.member;
+
+        var contentQuery = queryFactory
+                .select(Projections.constructor(
+                        ReviewResponseDTO.class,
+                        review.reviewId,
+                        member.name,
+                        store.name,
+                        review.star,
+                        review.content,
+                        review.createdAt,
+                        review.updatedAt
+                ))
+                .from(review)
+                .join(review.member, member)
+                .join(review.store, store)
+                .where(member.userId.eq(userId))
+                .orderBy(review.updatedAt.desc(), review.createdAt.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+
+        var countQuery = queryFactory
+                .select(review.count())
+                .from(review)
+                .where(review.member.userId.eq(userId));
+
+        return PageableExecutionUtils.getPage(contentQuery.fetch(), pageable, countQuery::fetchOne);
     }
 }
