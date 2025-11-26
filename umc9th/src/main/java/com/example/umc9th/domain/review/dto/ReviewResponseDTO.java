@@ -10,10 +10,11 @@ import java.time.LocalDateTime;
 @Builder
 public class ReviewResponseDTO {
 
-    private Long reviewId;
-    private Long storeId;
-    private Long memberId;
-    private String content;
-    private BigDecimal star;
-    private LocalDateTime createdAt;
+    private final Long reviewId;
+    private final String userName;
+    private final String storeName;
+    private final BigDecimal star;
+    private final String content;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime updatedAt;
 }
