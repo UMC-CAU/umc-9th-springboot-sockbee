@@ -2,6 +2,8 @@ package com.example.umc9th.domain.review.service;
 
 import com.example.umc9th.domain.member.entity.Member;
 import com.example.umc9th.domain.member.repository.MemberRepository;
+import com.example.umc9th.domain.review.converter.ReviewConverter;
+import com.example.umc9th.domain.review.dto.ReviewListResponse;
 import com.example.umc9th.domain.review.dto.ReviewRequestDTO;
 import com.example.umc9th.domain.review.dto.ReviewResponseDTO;
 import com.example.umc9th.domain.review.entity.Review;
@@ -11,6 +13,8 @@ import com.example.umc9th.domain.store.repository.StoreRepository;
 import com.example.umc9th.global.apiPayload.code.error.ReviewErrorCode;
 import com.example.umc9th.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,13 +44,12 @@ public class ReviewService {
 
         Review saved = reviewRepository.save(review);
 
-        return ReviewResponseDTO.builder()
-                .reviewId(saved.getReviewId())
-                .storeId(store.getId())
-                .memberId(member.getId())
-                .content(saved.getContent())
-                .star(saved.getStar())
-                .createdAt(saved.getCreatedAt())
-                .build();
+        return ReviewConverter.toResponseDTO(saved);
+    }
+
+    @Transactional(readOnly = true)
+    public ReviewListResponse getMyReviews(Long memberId, Pageable pageable) {
+        Page<ReviewResponseDTO> page = reviewRepository.findMyReviews(memberId, pageable);
+        return ReviewConverter.toListResponse(page);
     }
 }
