@@ -1,6 +1,7 @@
 package com.example.umc9th.domain.mission.service;
 
 import com.example.umc9th.domain.mission.converter.MissionConverter;
+import com.example.umc9th.domain.mission.dto.MemberMissionPageResponse;
 import com.example.umc9th.domain.mission.dto.MissionListResponse;
 import com.example.umc9th.domain.mission.repository.MissionRepository;
 import com.example.umc9th.domain.store.entity.Store;
@@ -26,5 +27,11 @@ public class MissionQueryService {
 
         var page = missionRepository.findMissionsByStore(storeId, pageable);
         return MissionConverter.toListResponse(store.getId(), store.getName(), page);
+    }
+
+    @Transactional(readOnly = true)
+    public MemberMissionPageResponse getOngoingMissions(Long memberId, Pageable pageable) {
+        var missionPage = missionRepository.findOngoingMissionsByMember(memberId, pageable);
+        return MissionConverter.toMemberMissionPageResponse(memberId, missionPage);
     }
 }

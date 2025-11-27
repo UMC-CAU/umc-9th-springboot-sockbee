@@ -6,6 +6,7 @@ public enum MissionSuccessCode implements BaseSuccessCode {
 
     MISSION_PARTICIPATE_SUCCESS(HttpStatus.OK, "M001", "미션 참여에 성공했습니다."),
     MISSION_LIST_SUCCESS(HttpStatus.OK, "M002", "가게 미션 목록을 성공적으로 조회했습니다."),
+    MISSION_ONGOING_LIST_SUCCESS(HttpStatus.OK, "M003", "진행 중인 미션 목록을 성공적으로 조회했습니다."),
     ;
 
     private final HttpStatus status;
