@@ -1,9 +1,10 @@
 package com.example.umc9th.domain.mission.repository.impl;
 
-import com.example.umc9th.domain.member.entity.QMember;
+import com.example.umc9th.domain.member.mapping.QUserMission;
 import com.example.umc9th.domain.mission.dto.MissionSummaryDTO;
 import com.example.umc9th.domain.mission.entity.Mission;
 import com.example.umc9th.domain.mission.entity.QMission;
+import com.example.umc9th.domain.mission.entity.Status;
 import com.example.umc9th.domain.mission.repository.custom.MissionRepositoryCustom;
 import com.example.umc9th.domain.store.entity.QStore;
 import com.querydsl.core.types.Projections;
@@ -51,5 +52,41 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
 
         return PageableExecutionUtils.getPage(contentQuery.fetch(), pageable, countQuery::fetchOne);
     }
-}
 
+    @Override
+    public Page<MissionSummaryDTO> findOngoingMissionsByMember(Long memberId, Pageable pageable) {
+        QMission mission = QMission.mission;
+        QStore store = QStore.store;
+        QUserMission userMission = QUserMission.userMission;
+
+        var contentQuery = queryFactory
+                .select(Projections.constructor(
+                        MissionSummaryDTO.class,
+                        mission.missionId,
+                        store.id,
+                        store.name,
+                        mission.status,
+                        mission.rewardPoint,
+                        mission.dueDate,
+                        mission.createdAt,
+                        mission.updatedAt
+                ))
+                .from(userMission)
+                .join(userMission.mission, mission)
+                .join(mission.store, store)
+                .where(userMission.member.userId.eq(memberId)
+                        .and(mission.status.eq(Status.IN_PROGRESS)))
+                .orderBy(mission.updatedAt.desc(), mission.missionId.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
+
+        var countQuery = queryFactory
+                .select(userMission.count())
+                .from(userMission)
+                .join(userMission.mission, mission)
+                .where(userMission.member.userId.eq(memberId)
+                        .and(mission.status.eq(Status.IN_PROGRESS)));
+
+        return PageableExecutionUtils.getPage(contentQuery.fetch(), pageable, countQuery::fetchOne);
+    }
+}

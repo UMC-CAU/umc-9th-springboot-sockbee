@@ -7,5 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface MissionRepositoryCustom {
 
     Page<MissionSummaryDTO> findMissionsByStore(Long storeId, Pageable pageable);
-}
 
+    Page<MissionSummaryDTO> findOngoingMissionsByMember(Long memberId, Pageable pageable);
+}
