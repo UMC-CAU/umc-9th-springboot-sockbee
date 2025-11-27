@@ -1,5 +1,6 @@
 package com.example.umc9th.domain.mission.converter;
 
+import com.example.umc9th.domain.mission.dto.MemberMissionPageResponse;
 import com.example.umc9th.domain.mission.dto.MissionListResponse;
 import com.example.umc9th.domain.mission.dto.MissionSummaryDTO;
 import com.example.umc9th.domain.mission.entity.Mission;
@@ -43,5 +44,15 @@ public final class MissionConverter {
                 .missions(page.getContent())
                 .build();
     }
-}
 
+    public static MemberMissionPageResponse toMemberMissionPageResponse(Long memberId, Page<MissionSummaryDTO> page) {
+        return MemberMissionPageResponse.builder()
+                .memberId(memberId)
+                .page(page.getNumber() + 1)
+                .size(page.getSize())
+                .totalElements(page.getTotalElements())
+                .totalPages(page.getTotalPages())
+                .missions(page.getContent())
+                .build();
+    }
+}
