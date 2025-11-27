@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserRepositoryTest implements CommandLineRunner {
 
-    private final UserRepository userRepository;
+    private final MemberRepository userRepository;
 
     @Override
     @Transactional

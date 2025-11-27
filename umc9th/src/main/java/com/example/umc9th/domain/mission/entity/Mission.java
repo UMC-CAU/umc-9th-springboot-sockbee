@@ -1,14 +1,14 @@
 package com.example.umc9th.domain.mission.entity;
 
-import com.example.umc9th.domain.member.entity.Member;
+import com.example.umc9th.domain.member.mapping.UserMission;
 import com.example.umc9th.domain.store.entity.Store;
 import com.example.umc9th.global.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "mission")
@@ -26,10 +26,6 @@ public class Mission extends BaseEntity {
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Member member;
-
     private LocalDateTime dueDate;
 
     private Integer rewardPoint;
@@ -39,6 +35,6 @@ public class Mission extends BaseEntity {
     private Status status;
 
     @OneToMany(mappedBy = "mission", fetch = FetchType.LAZY)
-    private Set<com.example.umc9th.domain.member.mapping.UserMission> userMissions = new HashSet<>();
+    private List<UserMission> userMissions = new ArrayList<>();
 
 }
