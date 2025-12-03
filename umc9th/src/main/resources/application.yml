@@ -19,7 +19,6 @@ spring:
         format_sql: true # ???? SQL ??? ?? ?? ???
 
 jwt:
-  token:
-    secretKey: ZGh3YWlkc2F2ZXdhZXZ3b2EgMTM5ZXUgMDMxdWMyIHEyMiBAIDAgKTJFVio=
-    expiration:
-      access: 14400000
+  secret: dGhpc2lzYXZlcnlzZWN1cmVzZWNyZXRrZXlmb3Jqd3R0b2tlbmdlbmVyYXRpb25hbmR2YWxpZGF0aW9ucHVycG9zZXNhbmRpdG11c3RiZWxvbmdlbm91Z2g=
+  access-token-expiration: 3600000  # 1시간
+  refresh-token-expiration: 604800000  # 7일

@@ -1,6 +1,9 @@
 package com.example.umc9th.global.config;
 
 import com.example.umc9th.global.security.CustomUserDetailsService;
+import com.example.umc9th.global.security.JwtAuthFilter;
+import com.example.umc9th.global.security.JwtUtil;
+import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +16,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -39,20 +43,28 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form
-                        .defaultSuccessUrl("/swagger-ui/index.html", true)
-                        .permitAll()
-                )
+                // 폼로그인 비활성화
+                .formLogin(AbstractHttpConfigurer::disable)
+                // JwtAuthFilter를 UsernamePasswordAuthenticationFilter 앞에 추가
+                .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class)
                 .csrf(AbstractHttpConfigurer::disable)
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
-                )
-                // H2 콘솔을 위한 설정
-                .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
+                );
 
         return http.build();
+    }
+
+    @Bean
+    public JwtAuthFilter jwtAuthFilter() {
+        return new JwtAuthFilter(jwtUtil(), customUserDetailsService);
+    }
+
+    @Bean
+    public JwtUtil jwtUtil() {
+        return new JwtUtil(new JwtProperties());
     }
 
     @Bean

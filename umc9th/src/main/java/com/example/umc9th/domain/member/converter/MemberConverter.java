@@ -34,4 +34,16 @@ public class MemberConverter {
                 .createdAt(member.getCreatedAt())
                 .build();
     }
+
+    // Entity + Token -> Login Response DTO
+    public static MemberResDTO.LoginDTO toLoginDTO(Member member, String accessToken) {
+        return MemberResDTO.LoginDTO.builder()
+                .memberId(member.getUserId())
+                .name(member.getName())
+                .email(member.getEmail())
+                .role(member.getRole().name())
+                .accessToken(accessToken)
+                .refreshToken(null) // 향후 리프레시 토큰 구현 시 추가
+                .build();
+    }
 }
