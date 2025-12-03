@@ -1,6 +1,7 @@
 package com.example.umc9th.domain.member.entity;
 
 import com.example.umc9th.domain.member.enums.Gender;
+import com.example.umc9th.domain.member.enums.Role;
 import com.example.umc9th.domain.member.enums.SnsType;
 import com.example.umc9th.domain.member.enums.MemberStatus;
 import com.example.umc9th.global.BaseEntity;
@@ -48,6 +49,15 @@ public class Member extends BaseEntity {
 
     @Column(length = 255)
     private String detailAddress;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     // mappings
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)

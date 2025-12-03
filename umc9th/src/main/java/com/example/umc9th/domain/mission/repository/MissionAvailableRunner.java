@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-@Profile("local")
+@Profile("test")
 @RequiredArgsConstructor
 public class MissionAvailableRunner implements CommandLineRunner {
 
