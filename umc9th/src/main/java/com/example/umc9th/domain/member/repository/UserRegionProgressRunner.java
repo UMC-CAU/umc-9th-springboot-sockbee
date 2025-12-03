@@ -11,7 +11,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-@Profile("local") // 로컬 환경일 때만 자동 실행
+@Profile("test") // 테스트 환경일 때만 자동 실행
 @RequiredArgsConstructor
 public class UserRegionProgressRunner implements CommandLineRunner {
 

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Slf4j
 @Component
-@Profile("local")              // ✅ local 프로필에서만 실행되도록 보호
+@Profile("test")              // test 프로필에서만 실행되도록 변경
 @RequiredArgsConstructor
 public class UserRepositoryTest implements CommandLineRunner {
 

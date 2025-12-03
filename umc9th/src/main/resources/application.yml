@@ -17,3 +17,8 @@ spring:
     properties:
       hibernate:
         format_sql: true # ???? SQL ??? ?? ?? ???
+
+jwt:
+  secret: dGhpc2lzYXZlcnlzZWN1cmVzZWNyZXRrZXlmb3Jqd3R0b2tlbmdlbmVyYXRpb25hbmR2YWxpZGF0aW9ucHVycG9zZXNhbmRpdG11c3RiZWxvbmdlbm91Z2g=
+  access-token-expiration: 3600000  # 1시간
+  refresh-token-expiration: 604800000  # 7일
