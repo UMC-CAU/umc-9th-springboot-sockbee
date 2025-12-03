@@ -37,5 +37,21 @@ public class MemberController {
                 response
         );
     }
+
+    @PostMapping("/login")
+    @Operation(
+            summary = "로그인",
+            description = "이메일과 비밀번호로 로그인합니다. 성공 시 JWT 토큰을 반환합니다. (현재는 임시 토큰)"
+    )
+    public ApiResponse<MemberResDTO.LoginDTO> login(
+            @Parameter(description = "로그인 요청 정보", required = true)
+            @Valid @RequestBody MemberReqDTO.LoginDTO request
+    ) {
+        MemberResDTO.LoginDTO response = memberCommandService.login(request);
+        return ApiResponse.onSuccess(
+                com.example.umc9th.global.apiPayload.code.success.GeneralSuccessCode.OK,
+                response
+        );
+    }
 }
 

@@ -4,6 +4,7 @@ import com.example.umc9th.global.apiPayload.ApiResponse;
 import com.example.umc9th.global.apiPayload.code.error.BaseErrorCode;
 import com.example.umc9th.global.apiPayload.code.error.GeneralErrorCode;
 import com.example.umc9th.global.apiPayload.exception.GeneralException;
+import com.example.umc9th.global.apiPayload.exception.MemberException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,8 +14,22 @@ public class GeneralExceptionAdvice {
 
     // 애플리케이션에서 발생하는 커스텀 예외를 처리
     @ExceptionHandler(GeneralException.class)
-    public ResponseEntity<ApiResponse<Void>> handleException(
+    public ResponseEntity<ApiResponse<Void>> handleGeneralException(
             GeneralException ex
+    ) {
+
+        return ResponseEntity.status(ex.getCode().getStatus())
+                .body(ApiResponse.onFailure(
+                                ex.getCode(),
+                                null
+                        )
+                );
+    }
+
+    // 회원 관련 예외 처리
+    @ExceptionHandler(MemberException.class)
+    public ResponseEntity<ApiResponse<Void>> handleMemberException(
+            MemberException ex
     ) {
 
         return ResponseEntity.status(ex.getCode().getStatus())

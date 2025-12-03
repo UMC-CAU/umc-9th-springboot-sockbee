@@ -10,6 +10,8 @@ import com.example.umc9th.domain.member.repository.MemberRepository;
 import com.example.umc9th.domain.member.repository.UserFoodTagRepository;
 import com.example.umc9th.domain.store.entity.FoodTag;
 import com.example.umc9th.domain.store.repository.FoodTagRepository;
+import com.example.umc9th.global.apiPayload.code.error.MemberErrorCode;
+import com.example.umc9th.global.apiPayload.exception.MemberException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,7 @@ public class MemberCommandServiceImpl implements MemberCommandService {
 
         // 이메일 중복 체크
         if (memberRepository.existsByEmail(dto.email())) {
-            throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
+            throw new MemberException(MemberErrorCode.EMAIL_ALREADY_EXISTS);
         }
 
         // 솔트된 비밀번호 생성
@@ -61,5 +63,37 @@ public class MemberCommandServiceImpl implements MemberCommandService {
         }
 
         return MemberConverter.toJoinDTO(savedMember);
+    }
+
+    // 로그인
+    @Override
+    public MemberResDTO.LoginDTO login(MemberReqDTO.LoginDTO dto) {
+        // 이메일로 사용자 조회
+        Member member = memberRepository.findByEmail(dto.email())
+                .orElseThrow(() -> new MemberException(MemberErrorCode.NOT_FOUND));
+
+        // 비밀번호 검증
+        if (!passwordEncoder.matches(dto.password(), member.getPassword())) {
+            throw new MemberException(MemberErrorCode.INVALID_PASSWORD);
+        }
+
+        // 계정 상태 확인
+        if (member.getStatus() == com.example.umc9th.domain.member.enums.MemberStatus.BANNED) {
+            throw new MemberException(MemberErrorCode.ACCOUNT_BANNED);
+        }
+
+        if (member.getStatus() == com.example.umc9th.domain.member.enums.MemberStatus.INACTIVE) {
+            throw new MemberException(MemberErrorCode.ACCOUNT_INACTIVE);
+        }
+
+        // 로그인 성공 - 향후 JWT 토큰 생성 로직 추가 예정
+        return MemberResDTO.LoginDTO.builder()
+                .memberId(member.getUserId())
+                .name(member.getName())
+                .email(member.getEmail())
+                .role(member.getRole().name())
+                .accessToken("임시_액세스_토큰") // JWT 구현 시 실제 토큰으로 교체
+                .refreshToken("임시_리프레시_토큰") // JWT 구현 시 실제 토큰으로 교체
+                .build();
     }
 }
